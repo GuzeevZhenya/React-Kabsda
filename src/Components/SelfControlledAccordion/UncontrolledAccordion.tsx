@@ -7,8 +7,8 @@ type AccordionPropsType = {
 export function UncontrolledAccordion(props: AccordionPropsType) {
   let [collapsed, setCollapsed] = useState(true);
 
-  const openHandler = (isOpen: boolean) => {
-    setCollapsed(isOpen);
+  const openHandler = () => {
+    setCollapsed(!collapsed);
   };
   return (
     <div>
@@ -25,12 +25,12 @@ export function UncontrolledAccordion(props: AccordionPropsType) {
 type AccordionTitlePropsType = {
   title: string;
   collapsed: boolean;
-  openHandler: (isOpen: boolean) => void;
+  openHandler: () => void;
 };
 
 function AccordionTitle(props: AccordionTitlePropsType) {
   return (
-    <h3 onClick={() => props.openHandler(!props.collapsed)}>{props.title}</h3>
+    <h3 onClick={() => props.openHandler()}>{props.title}</h3>
   );
 }
 

@@ -6,8 +6,8 @@ type RatingPropsType = {
 
 type StarPropsType = {
   selected: boolean;
-  starHandler: (stars: number) => void;
-  value: 1 | 2 | 3 | 4 | 5;
+  setValue: () => void;
+  // value: 1 | 2 | 3 | 4 | 5;
 };
 
 export const UncontrolledRating = (props: RatingPropsType) => {
@@ -19,11 +19,11 @@ export const UncontrolledRating = (props: RatingPropsType) => {
 
   return (
     <div>
-      <Star starHandler={starHandler} selected={value >= 1} value={1} />
-      <Star starHandler={starHandler} selected={value >= 2} value={2} />
-      <Star starHandler={starHandler} selected={value >= 3} value={3} />
-      <Star starHandler={starHandler} selected={value >= 4} value={4} />
-      <Star starHandler={starHandler} selected={value >= 5} value={5} />
+      <Star setValue={() => setValue(1)} selected={value >= 1} />
+      <Star setValue={() => setValue(2)} selected={value >= 2} />
+      <Star setValue={() => setValue(3)} selected={value >= 3} />
+      <Star setValue={() => setValue(4)} selected={value >= 4} />
+      <Star setValue={() => setValue(5)} selected={value >= 5} />
     </div>
   );
 };
@@ -32,7 +32,7 @@ function Star(props: StarPropsType) {
   return (
     <span
       onClick={() => {
-        props.starHandler(props.value);
+        props.setValue();
       }}
     >
       {props.selected ? <b>Star</b> : " star"}
