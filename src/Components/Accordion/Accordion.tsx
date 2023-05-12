@@ -4,6 +4,12 @@ type AccordionPropsType = {
   titleValue: string;
   collapsed: boolean;
   setAccordionCollapsed: (value: boolean) => void;
+  items: UsersPropsType[];
+};
+
+type UsersPropsType = {
+  name: string;
+  age: number;
 };
 
 export function Accordion(props: AccordionPropsType) {
@@ -16,7 +22,7 @@ export function Accordion(props: AccordionPropsType) {
         title={props.titleValue}
         setAccordionCollapsed={props.setAccordionCollapsed}
       />
-      {!collapsed && <AccordionBody />}
+      {!collapsed && <AccordionBody items={props.items} />}
     </div>
   );
 }
@@ -34,14 +40,16 @@ function AccordionTitle(props: AccordionTitlePropsType) {
   );
 }
 
-function AccordionBody() {
+type AccordionBodyPropsType = {
+  items: UsersPropsType[];
+};
+
+function AccordionBody(props: AccordionBodyPropsType) {
   return (
     <ul>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </ul>
+      {props.items.map((i) => (
+        <li key={i.age} onClick={()=>{alert(i.name)}}>{i.name}</li>
+      ))}
     </ul>
   );
 }

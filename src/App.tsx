@@ -7,16 +7,32 @@ import { Rating } from "./Components/Rating/Rating";
 import { OnOff } from "./Components/OnOff/OnOff";
 import { UncontrolledRating } from "./Components/UncontrolledRating/UncontrolledRating";
 import { RatingValueType } from "./Components/Rating/Rating";
+import {
+  TrackValueInput,
+  UncontrolledInput,
+} from "./Components/UncontrolledInput/UncontrolledInput";
+import {
+  ControlledCheckbox,
+  ControlledSelect,
+  ControlleldInput,
+} from "./Components/ControlledElements/ControlleldElements";
 
 function App() {
   let [ratingValue, setRatingValue] = useState<RatingValueType>(0);
   let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
   let [switchOn, setSwitchOn] = useState<boolean>(false);
+
+  let [users, setUsers] = useState([
+    { name: "Ivan", age: 15 },
+    { name: "Vasia", age: 23 },
+    { name: "Nick", age: 15 },
+  ]);
   return (
     <div className="App">
       <PageTitle title={"App title"} />
       <Rating value={ratingValue} onClick={setRatingValue} />
       <Accordion
+        items={users}
         titleValue={"menu"}
         collapsed={accordionCollapsed}
         setAccordionCollapsed={() => {
@@ -24,6 +40,7 @@ function App() {
         }}
       />
       <Accordion
+        items={users}
         titleValue={"settings"}
         collapsed={accordionCollapsed}
         setAccordionCollapsed={() => {
@@ -36,6 +53,11 @@ function App() {
       <UncontrolledAccordion titleValue="menu" />
       {/* <OnOff on={false} /> */}
       <UncontrolledRating />
+      <UncontrolledInput />
+      <TrackValueInput />
+      <ControlleldInput />
+      <ControlledCheckbox />
+      <ControlledSelect />
     </div>
   );
 }
