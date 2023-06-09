@@ -16,6 +16,11 @@ import {
   ControlledSelect,
   ControlleldInput,
 } from "./Components/ControlledElements/ControlleldElements";
+import {
+  HelpsForReactMemo,
+  ReactMemo,
+} from "./Components/ReactUsememo/ReactUseMemo";
+import { UseState } from "./Components/useState/UseState";
 
 function App() {
   let [ratingValue, setRatingValue] = useState<RatingValueType>(0);
@@ -58,6 +63,9 @@ function App() {
       <ControlleldInput />
       <ControlledCheckbox />
       <ControlledSelect />
+      <ReactMemo />
+      <HelpsForReactMemo />
+      <UseState />
     </div>
   );
 }
