@@ -18,9 +18,10 @@ import {
 } from "./Components/ControlledElements/ControlleldElements";
 import {
   HelpsForReactMemo,
-  ReactMemo,
+  ReactMemoUse,
 } from "./Components/ReactUsememo/ReactUseMemo";
 import { UseState } from "./Components/useState/UseState";
+import { ReactMemo } from "./Components/ReactMemo/ReactMemo";
 
 function App() {
   let [ratingValue, setRatingValue] = useState<RatingValueType>(0);
@@ -63,7 +64,8 @@ function App() {
       <ControlleldInput />
       <ControlledCheckbox />
       <ControlledSelect />
-      <ReactMemo />
+      {/* <ReactMemo /> */}
+      <ReactMemoUse />
       <HelpsForReactMemo />
       <UseState />
     </div>

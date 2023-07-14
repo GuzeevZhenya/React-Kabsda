@@ -4,7 +4,7 @@ import React, { useMemo, useState } from "react";
 //   title: "React memo",
 // };
 
-export const ReactMemo = () => {
+export const ReactMemoUse = () => {
   const [a, setA] = useState(3);
   const [b, setB] = useState(5);
 
@@ -54,14 +54,24 @@ const UserSecret = (props: { users: Array<string> }) => {
 const Users = React.memo(UserSecret);
 
 export const HelpsForReactMemo = () => {
+  console.log("helps");
   const [counter, setCounter] = useState(0);
-  const [users, setUsers] = useState(["ivan", "vasia", "kate"]);
+  const [users, setUsers] = useState([
+    "ivan",
+    "vasia",
+    "kate",
+    "Zheny",
+    "Kiril",
+  ]);
 
+  const newUsers = useMemo(() => {
+    return users.filter((u) => u.indexOf("a") > -1);
+  }, [users]);
   return (
     <>
       <button onClick={() => setCounter(counter + 1)}></button>
       {counter}
-      <Users users={users} />
+      <Users users={newUsers} />
     </>
   );
 };
